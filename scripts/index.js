@@ -91,23 +91,23 @@ function memberCall(pfpSrc, textContent, user) {
 function lain() {
     memberCall(
         "assets/lain_icon.png",
-        "<a href='https://namemc.com/_2' target='_blank' style='color: white;'>namemc</a>, <a href='https://instagram.com/axst' target='_blank' style='color: white;'>instagram</a>, <a href='https://x.com/eternallyexile' target='_blank' style='color: white;'>x</a>",
+        "<a href='https://namemc.com/_2' target='_blank' style='color: white;'>namemc</a>, <a href='https://instagram.com/sword' target='_blank' style='color: white;'>instagram</a>, <a href='https://x.com/eternallyexile' target='_blank' style='color: white;'>x</a>",
         "lain"
     );
 }
 
-function tragic() {
+function anemic() {
     memberCall(
-        "assets/crush_icon.png",
-        "<a href='https://namemc.com/Percocet' target='_blank' style='color: white;'>namemc</a>, <a href='https://instagram.com/dbvq' target='_blank' style='color: white;'>instagram</a>, <a href='https://x.com/cr_shing' target='_blank' style='color: white;'>x</a>",
-        "tragic"
+        "assets/anemic_icon.png",
+        "<a href='https://namemc.com/Percocet' target='_blank' style='color: white;'>namemc</a>, <a href='https://www.roblox.com/users/418188320/profile' target='_blank' style='color: white;'>roblox</a>, <a href='https://x.com/cr_shing' target='_blank' style='color: white;'>x</a>",
+        "anemic"
     );
 }
 
-function drang() {    memberCall(
-    "assets/drang_icon.png",
-    "<a href='https://soundcloud.com/7i8' target='_blank' style='color: white;'>soundcloud</a>, <a href='https://instagram.com/51a1' target='_blank' style='color: white;'>instagram</a> ",
-    "drang"
+function miserable() {    memberCall(
+    "assets/miserable_icon.png",
+    "<a href='https://namemc.com/profile/chiefkeef.3' target='_blank' style='color: white;'>namemc</a>, <a href='https://www.roblox.com/users/200190663/profile' target='_blank' style='color: white;'>roblox</a>, <a href='https://instagram.com/hate' target='_blank' style='color: white;'>instagram</a> ",
+    "miserable"
 );
 }
 
