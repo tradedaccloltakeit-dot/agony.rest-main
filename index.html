@@ -1,57 +1,133 @@
+<!doctype html>
 <html lang="en">
 <head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>#agony</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0F0F0F">
+<meta name="description" content="the world is your oyster">
+<meta property="og:title" content="#agony">
 <meta property="og:description" content="the world is your oyster">
-<meta name="theme-color" data-react-helmet="true" content="#2B2D31">
-<link rel="stylesheet" type="text/css" href="css/old.css">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="assets/arceus.gif">
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="css/main.css">
 </head>
-
 <body>
-<audio id="song" src="assets/song.mp3" autoplay loop></audio>
+<div class="ag">
 
-<div class="buttons-container" id="enter-container">
-<button id="enter" onclick="startPage()">enter</button>
+  <div class="fx-bg" aria-hidden="true"></div>
+  <img class="bg-gif" id="bg-gif" alt="" aria-hidden="true">
+  <img class="bg-ascii" src="assets/fake-ascii.png" alt="" aria-hidden="true">
+  <div class="fx-glyphs" aria-hidden="true">
+    <span class="g1">x</span><span class="g2">{</span><span class="g3">0</span><span class="g4">(</span><span class="g5">;</span>
+    <div class="col"><span>:</span><span>/</span><span>{</span><span>0</span><span>/</span><span>:</span><b>&gt;</b></div>
+  </div>
+  <canvas class="fx-snow" id="snow" aria-hidden="true"></canvas>
+  <div class="fx-glow" aria-hidden="true"></div>
+  <div class="fx-grain" aria-hidden="true"></div>
+  <canvas class="fx-static" id="static" width="400" height="225" aria-hidden="true"></canvas>
+  <div class="fx-crt" aria-hidden="true"></div>
+
+  <main class="term">
+    <div class="bar">
+      <button class="dot" id="close" type="button" aria-label="close terminal"></button>
+      <i aria-hidden="true"></i><i aria-hidden="true"></i>
+      <span class="title"><span class="hash">#</span><b>agony</b></span>
+      <span class="ts" id="ts" aria-hidden="true"></span>
+    </div>
+
+    <div class="body">
+      <div class="blk" data-fx="decode">
+        <div class="prompt"><span class="d">$</span> <span class="cmd" data-t="whoami">whoami</span></div>
+        <div class="out who">
+          <span class="name" data-text="agony">agony</span>
+          <div class="tagline dim">a cyber collective</div>
+        </div>
+      </div>
+
+      <div class="blk">
+        <div class="prompt"><span class="d">$</span> <span class="cmd" data-t="ls members/">ls members/</span></div>
+        <div class="out">
+          <div class="members" id="members">
+            <button class="mem" type="button" data-member="lain">lain</button><span class="sep">◦</span>
+            <button class="mem" type="button" data-member="anemic">anemic</button><span class="sep">◦</span>
+            <button class="mem" type="button" data-member="miserable">miserable</button>
+          </div>
+          <div class="member-out" id="member-out" hidden>
+            <img id="mem-pfp" alt="">
+            <div class="member-meta">
+              <span class="mem-label" id="mem-label"></span>
+              <span class="links" id="mem-links"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="blk">
+        <div class="prompt"><span class="d">$</span> <span class="cmd" data-t="cat about.txt">cat about.txt</span></div>
+        <p class="out flush about"><b>#agony</b> is a cyber collective focused on cybersecurity, reverse engineering, and other technical pursuits.</p>
+      </div>
+
+      <div class="blk">
+        <div class="prompt"><span class="d">$</span> <span class="cmd" data-t="now-playing">now-playing</span></div>
+        <div class="out np">
+          <span class="eq" aria-hidden="true"><b></b><b></b><b></b><b></b></span>
+          <span class="np-text"><span class="dim" id="np-state">loading…</span> <span class="np-track">/agony.mp3</span></span>
+        </div>
+      </div>
+
+      <div class="blk">
+        <div class="prompt"><span class="d">$</span> <span class="cmd" data-t="ouija --ask">ouija --ask</span></div>
+        <div class="out">
+          <form class="ouija-form" id="ouija-form">
+            <span class="d" aria-hidden="true">&gt;</span>
+            <input id="ouija-input" maxlength="200" placeholder="ask the spirits a question…" aria-label="ask the spirits a question" autocomplete="off" spellcheck="false">
+            <button id="ouija-submit" type="submit" disabled>ask</button>
+          </form>
+          <p class="ouija-reply dim" id="ouija-thinking" aria-live="polite" hidden>the planchette begins to move<span class="ouija-dots"></span></p>
+          <p class="ouija-reply" id="ouija-reply" aria-live="polite" hidden><span id="ouija-spelling"></span><span class="ouija-cursor" id="ouija-cursor" aria-hidden="true"></span></p>
+          <p class="ouija-bye" id="ouija-bye" hidden>— good bye <button type="button" class="ouija-again" id="ouija-again">ask again</button></p>
+          <p class="ouija-reply dim" id="ouija-error" role="alert" hidden></p>
+        </div>
+      </div>
+
+      <p id="end" class="prompt"><span class="d">$</span> <span class="cursor"></span></p>
+    </div>
+
+    <div class="status" aria-hidden="true">
+      <span class="left">the world is your oyster</span>
+      <span class="right"><i></i>agony.rest</span>
+    </div>
+  </main>
+
+  <div class="player" id="player">
+    <button id="mute" type="button" aria-label="play, mute or unmute music">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"></path>
+        <g class="w"><path d="M16.5 8.5a5 5 0 0 1 0 7"></path><path d="M19 6a8.5 8.5 0 0 1 0 12"></path></g>
+        <g class="x"><path d="M17 9l5 6"></path><path d="M22 9l-5 6"></path></g>
+      </svg>
+    </button>
+    <input id="vol" type="range" min="0" max="100" value="70" aria-label="volume">
+    <span class="eq" aria-hidden="true"><b></b><b></b><b></b><b></b></span>
+    <span class="hint"><span class="fn">/agony.mp3</span> <span id="st">loading</span></span>
+  </div>
+  <audio id="bgm" src="assets/song.mp3" loop preload="auto"></audio>
+
+  <button class="reopen" id="reopen" type="button"><span class="d">$</span> <span class="k">/reopen</span></button>
+
+  <div id="loader" aria-hidden="true">
+    <div class="ld">
+      <img class="ld-gif" id="ld-gif" alt="" aria-hidden="true">
+      <div class="ld-logo" id="ld-logo">#agony</div>
+      <div class="ld-bar"><i id="ld-fill"></i></div>
+      <div class="ld-meta"><span id="ld-msg">summoning</span><span id="ld-pct">0%</span></div>
+    </div>
+  </div>
+
 </div>
-
-<div class="buttons-container" id="member-container">
-<button onclick="lain()">lain</button>
-<p>◦</p>
-<button onclick="anemic()">anemic</button>
-<p>◦</p>
-<button onclick="miserable()">miserable</button>
-</div>
-
-<div class="buttons-container" id="main-container">
-<button onclick="about()">about</button>
-</div>
-
-<div class="background">
-<div class="ascii-image" id="image">
-<img id="random-gif">
-<img id="pfp-image">
-</div>
-
-<div class="full-page-overlay">
-<img src="assets/fake-ascii.png">
-</div>
-</div>
-
-<div class="text-container">
-<p class="display-text"></p>
-</div>
-
-<div class="snowflakes"></div>
-
-<script>
-window.onload = function() {
-if (window.location.pathname === '/old.html') {
-window.location.replace('/old');
-}
-};
-</script>
-<script src="scripts/snowflakes.js"></script>
-<script src="scripts/index.js"></script>
+<script src="scripts/main.js"></script>
 </body>
 </html>
