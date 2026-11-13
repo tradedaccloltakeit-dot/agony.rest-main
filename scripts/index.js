@@ -171,7 +171,7 @@ function updatePage(htmlContent, pageTitle) {
 
 function about() {
     updatePage(
-        "<a href='https://agony.rest' target='_blank' style='color: white;'>#agony</a> is a cyber collective with a primary focus on coding and various other digital endeavors.",
+        "<a href='https://agony.rest' target='_blank' style='color: white;'>#agony</a> is a cyber collective focused on cybersecurity, reverse engineering, and other technical pursuits.",
         "about"
     );
 }
@@ -247,4 +247,3 @@ function updateButtonHoverColor() {
         button.setAttribute("data-gif", currentGif);
     });
 }
-
