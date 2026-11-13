@@ -118,6 +118,14 @@
 
   <button class="reopen" id="reopen" type="button"><span class="d">$</span> <span class="k">/reopen</span></button>
 
+  <div id="guard" role="alert" hidden>
+    <div class="guard-box">
+      <p class="guard-cmd"><span class="d">$</span> close devtools</p>
+      <p class="guard-msg dim">this terminal is not open for inspection.</p>
+      <button class="guard-reload" id="guard-reload" type="button">reload</button>
+    </div>
+  </div>
+
   <div id="loader" aria-hidden="true">
     <div class="ld">
       <img class="ld-gif" id="ld-gif" alt="" aria-hidden="true">
@@ -128,6 +136,7 @@
   </div>
 
 </div>
+<script src="scripts/guard.js?v=1"></script>
 <script src="scripts/main.js"></script>
 </body>
 </html>

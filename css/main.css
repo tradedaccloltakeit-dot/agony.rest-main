@@ -709,6 +709,53 @@ body {
 }
 #ld-pct { color: var(--faint); font-variant-numeric: tabular-nums; }
 
+/* ───────────────────── casual anti-inspect overlay ───────────────────── */
+
+#guard {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  text-align: center;
+  background: rgba(6, 6, 7, 0.92);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+#guard[hidden] { display: none; }
+.guard-box {
+  max-width: min(400px, 86vw);
+  padding: 1.4rem 1.6rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: var(--panel);
+  box-shadow: 0 30px 80px -30px #000;
+}
+.guard-cmd { margin: 0 0 0.35rem; font-weight: 700; color: var(--bright); }
+.guard-cmd .d { color: var(--accent); }
+.guard-msg { margin: 0 0 1.1rem; font-size: 13px; }
+.guard-reload {
+  all: unset;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  padding: 0.4rem 1.1rem;
+  color: var(--bright);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  transition: color 0.3s, border-color 0.3s;
+}
+.guard-reload:hover { color: var(--accent); border-color: var(--accent); }
+body.held { overflow: hidden; user-select: none; }
+body.held .term,
+body.held .player,
+body.held .reopen {
+  filter: blur(12px);
+  pointer-events: none;
+  user-select: none;
+}
+
 /* ─────────────────────────── responsive ─────────────────────────── */
 
 @media (max-width: 620px) {
